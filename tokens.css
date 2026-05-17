@@ -1,0 +1,138 @@
+/* ════════════════════════════════════════════════════════════════
+   ECOSSISTEMA CATARINA VEIGA · tokens.css · v1
+   ────────────────────────────────────────────────────────────────
+   Arquitectura espelhada da Parsley Health (verde clínico + base bone
+   + terroso humano), identidade BioFuncional / Aletheia.
+   Espaço de cor: OKLCH (perceptualmente uniforme). Hex de referência
+   em comentário para handoff a quem não usa OKLCH.
+
+   Decisões canónicas (validadas contra a Parsley):
+   · Base mantém-se cream #FAF9F7 (≈ bone Parsley) — NÃO mudar.
+   · Âncora escura NOVA: --forest (verde escuro frio) para headlines,
+     CTAs e secções escuras. Nunca preto. Resolve o contraste fraco
+     do sage claro sobre cream.
+   · Terroso canónico: --rust (a contraparte humana do verde clínico,
+     mesma lógica do ochre/mahogany da Parsley).
+   ════════════════════════════════════════════════════════════════ */
+
+:root {
+
+  /* ── Verdes · assinatura clínica ─────────────────────────────── */
+  --cv-deep-sea:  oklch(24%   0.024 188);  /* #132D2E · verde quase-preto */
+  --cv-forest:    oklch(34%   0.028 190);  /* âncora escura · headlines/CTA/secções */
+  --cv-fern:      oklch(48%   0.034 188);  /* verde médio */
+  --cv-sage:      oklch(56%   0.020 190);  /* #718281 · sage de marca (apoio) */
+  --cv-clover:    oklch(70%   0.060 168);  /* verde-água vivo */
+  --cv-mint:      oklch(89%   0.034 175);  /* fundos suaves */
+  --cv-seafoam:   oklch(95%   0.012 175);  /* fundos lavados */
+
+  /* ── Neutros · base clara ────────────────────────────────────── */
+  --cv-cream:     oklch(97.8% 0.003 80);   /* #FAF9F7 · fundo principal (mantido) */
+  --cv-ivory:     oklch(96.5% 0.004 82);   /* fundo alternado */
+  --cv-white-hot: oklch(99.5% 0.001 80);   /* superfície de card */
+  --cv-line:      oklch(90%   0.006 80);   /* hairline */
+  --cv-line-soft: oklch(93.5% 0.005 80);
+
+  /* ── Texto ───────────────────────────────────────────────────── */
+  --cv-ink:       oklch(34%   0.006 75);   /* #333 · corpo (validado) */
+  --cv-ink-soft:  oklch(46%   0.008 75);
+  --cv-muted:     oklch(58%   0.008 75);
+  --cv-on-dark:   oklch(95%   0.012 85);   /* bone · texto sobre forest/deep-sea */
+  --cv-on-dark-mut:oklch(74%  0.016 130);  /* muted sobre escuro */
+
+  /* ── Terroso · calor humano (acento) ─────────────────────────── */
+  --cv-rust:      oklch(55%   0.125 38);   /* #B85840 · acento canónico */
+  --cv-rust-dark: oklch(47%   0.115 36);   /* hover/press */
+  --cv-ochre:     oklch(64%   0.105 70);   /* #BF7E3D · acento secundário */
+  --cv-peach:     oklch(87%   0.038 65);   /* #EBCFB8 · superfície quente suave */
+  --cv-moonlight: oklch(92%   0.042 90);   /* #F6E9D1 · realce quente */
+  --cv-blush:     oklch(91%   0.020 30);   /* #F1D9D6 · ausência/perda */
+
+  /* ── Estados ─────────────────────────────────────────────────── */
+  --cv-error:     oklch(49%   0.155 28);   /* #AB373D */
+  --cv-disabled:  oklch(80%   0.004 285);  /* #C4C4C8 */
+
+  /* ════════════ ALIASES SEMÂNTICOS · usar SEMPRE estes ════════════ */
+  --bg:            var(--cv-cream);
+  --bg-alt:        var(--cv-ivory);
+  --surface:       var(--cv-white-hot);
+  --surface-warm:  var(--cv-peach);
+  --dark:          var(--cv-forest);       /* secções/CTA/headline escuras */
+  --dark-deep:     var(--cv-deep-sea);
+  --text:          var(--cv-ink);
+  --text-display:  var(--cv-forest);       /* títulos sobre cream (contraste correcto) */
+  --text-soft:     var(--cv-ink-soft);
+  --text-muted:    var(--cv-muted);
+  --on-dark:       var(--cv-on-dark);
+  --on-dark-muted: var(--cv-on-dark-mut);
+  --accent:        var(--cv-rust);         /* terroso canónico */
+  --accent-hover:  var(--cv-rust-dark);
+  --accent-2:      var(--cv-ochre);
+  --brand-green:   var(--cv-sage);
+  --line:          var(--cv-line);
+  --line-soft:     var(--cv-line-soft);
+
+  /* ── Gradientes (padrão Parsley) ─────────────────────────────── */
+  --grad-mint-ivory:  linear-gradient(180deg, var(--cv-mint), var(--cv-ivory));
+  --grad-warm:        linear-gradient(135deg, var(--cv-peach), var(--cv-ivory) 55%, var(--cv-blush));
+  --grad-washed:      linear-gradient(180deg, oklch(94% 0.02 175), var(--cv-seafoam));
+
+  /* ── Tipografia (trio do ecossistema) ────────────────────────── */
+  --font-serif: "EB Garamond", Georgia, serif;   /* display, headlines, editorial */
+  --font-sans:  "Karla", -apple-system, sans-serif; /* corpo, UI, eyebrow */
+  --font-mono:  "JetBrains Mono", "Menlo", monospace; /* dados/números (tnum, lnum) */
+  --fs-eyebrow: 11px;  --fs-small: 13px;  --fs-body: 16px;  --fs-lead: 19px;
+  --fs-h3: 24px;  --fs-h2: 34px;  --fs-h1: clamp(40px, 5vw, 72px);  --fs-display: clamp(56px, 8vw, 108px);
+  --lh-tight: 1.05;  --lh-snug: 1.2;  --lh-body: 1.62;
+  --tr-eyebrow: 0.2em;  --tr-display: -0.02em;
+
+  /* ── Espaço · base 4 ─────────────────────────────────────────── */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 16px; --sp-4: 24px;
+  --sp-5: 40px; --sp-6: 64px; --sp-7: 96px; --sp-8: 144px;
+
+  /* ── Raio · editorial (cantos quase rectos; pill só botões) ──── */
+  --r-sm: 4px; --r-md: 8px; --r-lg: 18px; --r-xl: 22px; --r-pill: 999px;
+
+  /* ── Sombra · difusão tintada ao escuro ──────────────────────── */
+  --shadow-soft: 0 1px 2px oklch(24% 0.024 188 / 0.05), 0 8px 24px -14px oklch(24% 0.024 188 / 0.10);
+  --shadow-card: 0 1px 3px oklch(24% 0.024 188 / 0.07), 0 18px 40px -18px oklch(24% 0.024 188 / 0.14);
+
+  /* ── Movimento ───────────────────────────────────────────────── */
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 150ms; --dur-base: 300ms; --dur-slow: 500ms;
+
+  /* ── Layout ──────────────────────────────────────────────────── */
+  --maxw: 1180px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-fast: 0ms; --dur-base: 0ms; --dur-slow: 0ms; }
+}
+
+/* ── Base mínima ─────────────────────────────────────────────── */
+body { background: var(--bg); color: var(--text); font-family: var(--font-sans);
+  font-size: var(--fs-body); line-height: var(--lh-body);
+  font-feature-settings: "kern" 1, "liga" 1; -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { font-family: var(--font-serif); font-weight: 400;
+  color: var(--text-display); letter-spacing: var(--tr-display);
+  text-wrap: balance; line-height: var(--lh-tight); }
+p { max-width: 62ch; text-wrap: pretty; }
+.eyebrow { font-family: var(--font-mono); font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tr-eyebrow); text-transform: uppercase; color: var(--accent); }
+.mono, .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums lining-nums; }
+
+/* secção escura · âncora forest (padrão Parsley labs) */
+.section--dark { background: var(--dark); color: var(--on-dark); }
+.section--dark h1, .section--dark h2, .section--dark h3 { color: var(--on-dark); }
+.section--dark p { color: var(--on-dark-muted); }
+
+/* botões */
+.btn { font-family: var(--font-sans); font-weight: 600; font-size: 15px;
+  padding: 15px 30px; border-radius: var(--r-pill); border: 1px solid transparent;
+  transition: transform var(--dur-fast) var(--ease-spring), background-color var(--dur-fast) var(--ease-spring); }
+.btn:active { transform: translateY(1px) scale(0.986); }
+.btn--accent { background: var(--accent); color: var(--cv-white-hot); }
+.btn--accent:hover { background: var(--accent-hover); }
+.btn--on-dark { background: var(--cv-peach); color: var(--dark); }   /* CTA sobre forest, à Parsley */
+.btn--ghost { background: transparent; color: var(--text); border-color: var(--line); }
+.btn--ghost:hover { border-color: var(--text); }
